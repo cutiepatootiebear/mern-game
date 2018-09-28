@@ -19,6 +19,7 @@ scoreRouter
     });
   });
 
+<<<<<<< HEAD:db/routes/scoreRoutes.js
 scoreRouter.route("/:id").delete((req, res) => {
   Score.findOneAndRemove({ _id: req.params.id }, (err, deletedScore) => {
     if (err) return res.status(500).send(err);
@@ -30,3 +31,14 @@ scoreRouter.route("/:id").delete((req, res) => {
       });
   });
 });
+=======
+    scoreRouter.route('/:id')
+        .delete((req, res) => {
+            Score.findOneAndRemove({ _id: req.params.id }, (err, deletedScore) => {
+                if(err) return res.status(500).send(err)
+                return res.status(202).send({ deletedScore: deletedScore, message: "Score successfully removed"})
+            })
+        })
+
+module.exports = scoreRouter
+>>>>>>> 394498331c6ec1a4c62bca7daffd7cae1f3e5730:server/routes/scoreRoutes.js
