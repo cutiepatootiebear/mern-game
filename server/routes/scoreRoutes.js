@@ -30,3 +30,5 @@ scoreRouter.route("/:id").delete((req, res) => {
       });
   });
 });
+
+module.exports = scoreRouter
