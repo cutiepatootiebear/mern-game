@@ -25,3 +25,5 @@ scoreRouter.route('/')
                 return res.status(202).send({ deletedScore: deletedScore, message: "Score successfully removed"})
             })
         })
+
+module.exports = scoreRouter

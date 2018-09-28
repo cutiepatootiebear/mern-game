@@ -12,7 +12,7 @@ app.use(express.json());
 // Connects to Mongodb on your local hard drive to save your db
 mongoose
   .connect(
-    "mongodb://localhost:27017",
+    "mongodb://localhost:27017/mern-game",
     { useNewUrlParser: true },
     () => {
       console.log("Connected to the database");
@@ -26,6 +26,7 @@ mongoose
 // The second argument is what routes to use when the endpoint is
 // requested by a front end
 // app.use("/games", gameRoutes);
+app.use('/', require('./routes/scoreRoutes'))
 
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`);
