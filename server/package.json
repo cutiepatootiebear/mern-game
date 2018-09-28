@@ -1,0 +1,29 @@
+{
+  "name": "mern-game",
+  "version": "1.0.0",
+  "description": "MERN stack game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutiepatootiebear/mern-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cutiepatootiebear/mern-game/issues"
+  },
+  "homepage": "https://github.com/cutiepatootiebear/mern-game#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.18",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
