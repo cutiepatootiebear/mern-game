@@ -26,7 +26,7 @@ mongoose
 // The second argument is what routes to use when the endpoint is
 // requested by a front end
 // app.use("/games", gameRoutes);
-app.use('/', require('./routes/scoreRoutes'))
+app.use("/", require("./routes/scoreRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`);
