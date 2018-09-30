@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8080;
 const authRoute = require('./routes/auth')
 const scoreRoutes = require("./routes/scoreRoutes");
 const expressJwt = require("express-jwt")
+require("dotenv").config()
 
 // Middlwares to be used on every request that comes into the server
 app.use(morgan("dev"));
