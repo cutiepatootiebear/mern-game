@@ -5,7 +5,7 @@ const Score = require("../models/scores");
 scoreRouter
   .route("/")
   .get((req, res) => {
-    Score.find((err, text) => {
+    Score.find({ user: req.user._id }, (err, text) => {
       if (err) return res.status(500).send(err);
       return res.status(200).send(text);
     });
@@ -13,22 +13,21 @@ scoreRouter
 
   .post((req, res) => {
     const newScore = new Score(req.body);
-    newScore.save((err, savedScore) => {
+    newScore.user = req.user._id;
+    newScore.save((err, newScore) => {
       if (err) return res.status(500).send(err);
-      return res.status(201).send(savedScore);
+      return res.status(201).send(newScore);
     });
   });
 
 scoreRouter.route("/:id").delete((req, res) => {
-  Score.findOneAndRemove({ _id: req.params.id }, (err, deletedScore) => {
+  Score.findOneAndRemove({ _id: req.params.id, user: req.user._id }, (err, deletedScore) => {
     if (err) return res.status(500).send(err);
-    return res
-      .status(202)
-      .send({
-        deletedScore: deletedScore,
-        message: "Score successfully removed"
-      });
+    return res.status(202).send({
+      deletedScore: deletedScore,
+      message: "Score successfully removed"
+    });
   });
 });
 
-module.exports = scoreRouter
+module.exports = scoreRouter;
