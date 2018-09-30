@@ -29,6 +29,7 @@ mongoose
 // The second argument is what routes to use when the endpoint is
 // requested by a front end
 app.use("/api", expressJwt({secret: process.env.SECRET}))
+
 app.use("/auth", authRoute)
 app.use("/api/scores", scoreRoutes);
 
