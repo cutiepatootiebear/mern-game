@@ -15,9 +15,9 @@ const userSchema = new Schema ({
 })
 
 // Pre save ‘hook’ to encrypt password before saving the new user’s info
-userSchema.pre(“save”, function(next){
+userSchema.pre("save", function(next){
    const user = this
-   if(!user.isModified(“password”)) return next()
+   if(!user.isModified("password")) return next()
    bcrypt.hash(user.password, 10, function(err, hash){
        if(err) return next(err)
        user.password = hash
