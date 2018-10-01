@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Profile = props => {
+    console.log(props)
     return (
         <div>
             <h1>Hello {props.user.username}!</h1>

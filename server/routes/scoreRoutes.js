@@ -14,9 +14,9 @@ scoreRouter
   .post((req, res) => {
     const newScore = new Score(req.body);
     newScore.user = req.user._id
-    newScore.save((err, savedScore) => {
+    newScore.save((err, newScore) => {
       if (err) return res.status(500).send(err);
-      return res.status(201).send(savedScore);
+      return res.status(201).send(newScore);
     });
   });
 
