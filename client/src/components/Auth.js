@@ -17,20 +17,20 @@ class Auth extends Component {
     }
 
     render(){
-        let signupErr = this.props.authErrCode.signup
-        let loginErr = this.props.authErrCode.login
-        let errMsg = ""
-        if(signupErr < 500 && signupErr > 399){
-            errMsg = "Invalid Username or Password!"
-        } else if(signupErr > 499){
-            errMsg = "Server Error"
-        }
+        // let signupErr = this.props.authErrCode.signup
+        // let loginErr = this.props.authErrCode.login
+        // let errMsg = ""
+        // if(signupErr < 500 && signupErr > 399){
+        //     errMsg = "Invalid Username or Password!"
+        // } else if(signupErr > 499){
+        //     errMsg = "Server Error"
+        // }
 
-        if(loginErr < 500 && loginErr > 399){
-            errMsg = "Invalid Username or Password"
-        } else if(loginErr > 499){
-            errMsg = "Server Error"
-        }
+        // if(loginErr < 500 && loginErr > 399){
+        //     errMsg = "Invalid Username or Password"
+        // } else if(loginErr > 499){
+        //     errMsg = "Server Error"
+        // }
 
         return (
             <div className="auth-page">
@@ -57,7 +57,7 @@ class Auth extends Component {
                         render={props => <AuthForm {...props} btnText="Login"/>}
                         reset/>
                 }   
-                <p>{errMsg}</p>
+                {/* <p>{errMsg}</p> */}
             </div>
         )
     }
