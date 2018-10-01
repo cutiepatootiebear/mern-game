@@ -32,7 +32,6 @@ class App extends React.Component {
 
     getData = () => {
         postsAxios.get("/api/scores").then(res => {
-            console.log(res.data)
             this.setState({
                 scores: res.data
             })
@@ -95,7 +94,7 @@ class App extends React.Component {
     }
 
     render(){
-        console.log(this.state.scores)
+        // console.log(this.state.scores)
         return(
             <div>
                 <Navbar logout={this.logout} authenticated={this.authenticate}/>
