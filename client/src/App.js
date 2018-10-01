@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import Auth from './components/Auth'
 import Profile from './components/Profile'
 import Scores from './components/Scores'
@@ -30,19 +30,9 @@ class App extends React.Component {
         }
     }
 
-    authenticate = user => {
-        this.setState(prevState => ({
-            user: {
-                ...user
-            },
-            isAuthenticated: true
-        }), () => {
-            this.getData()
-        })
-    }
-
     getData = () => {
         postsAxios.get("/api/scores").then(res => {
+            console.log(res.data)
             this.setState({
                 scores: res.data
             })
@@ -53,7 +43,7 @@ class App extends React.Component {
         axios.post("/auth/signup", userInfo).then(res => {
             const { token, user } = res.data
             localStorage.setItem("token", token)
-            localStorage.setItem("user", JSON.toStringify(user))
+            localStorage.setItem("user", JSON.stringify(user))
             this.authenticate(user)
         }).catch(err => {
             console.log(err)
@@ -64,7 +54,7 @@ class App extends React.Component {
         axios.post("/auth/login", userInfo).then(res => {
             const { token, user } = res.data
             localStorage.setItem("token", token)
-            localStorage.setItem("user", JSON.toStringify(user))
+            localStorage.setItem("user", JSON.stringify(user))
             this.authenticate(user)
         }).catch(err => {
             console.log(err)
@@ -86,10 +76,29 @@ class App extends React.Component {
         })
     }
 
+    handleChange = e => {
+        const { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    authenticate = user => {
+        this.setState(prevState => ({
+            user: {
+                ...user
+            },
+            isAuthenticated: true
+        }), () => {
+            this.getData()
+        })
+    }
+
     render(){
+        console.log(this.state.scores)
         return(
             <div>
-                <Navbar logout={this.logout} authenticate={this.authenticate}/>
+                <Navbar logout={this.logout} authenticated={this.authenticate}/>
                 <Switch>
                     <Route exact path="/" render={ props => <Auth {...props} signUp={this.signUp} login={this.login} />} />
                     <Route path="/profile" render={ props => <Profile {...props} user={this.state.user} />} />
@@ -102,4 +111,4 @@ class App extends React.Component {
 
 }
 
-export default App
+export default withRouter(App)
