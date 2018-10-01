@@ -3,6 +3,28 @@ const authRouter = express.Router();
 const User = require("../models/user.js");
 const jwt = require('jsonwebtoken')
 
+// Get all users
+authRouter.route("/")
+.get((req, res) => {
+  User.find((err, text) => {
+    if (err) return res.status(500).send(err);
+    return res.status(200).send(text);
+  });
+})
+
+// Delete a user
+authRouter.route("/:id").delete((req, res) => {
+  User.findOneAndRemove({_id: req.params.id}, (err, deletedUser) => {
+    if (err) return res.status(500).send(err);
+    return res
+      .status(201)
+      .send({
+        deletedUser: deletedUser,
+        message: "User successfully removed"
+      });
+  });
+});
+
 // Login
 authRouter.post("/login", (req, res) => {
   User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
