@@ -1,8 +1,10 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import { Switch, Route } from 'react-router-dom'
 import Auth from './components/Auth'
 import Profile from './components/Profile'
 import Scores from './components/Scores'
+import Footer from './components/Footer'
 import './app.css'
 import axios from 'axios'
 
