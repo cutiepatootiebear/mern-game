@@ -1,5 +1,8 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from './components/Navbar'
+import Auth from './components/Auth'
+import Profile from './components/Profile'
+import Scores from './components/Scores'
 import './app.css'
 
 let postsAxios = axios.create()
@@ -14,7 +17,14 @@ postsAxios.interceptors.request.use((config) => {
 class App extends React.Component {
     constructor(){
         super()
-        this.state
+        this.state = {
+            scores: [],
+            user: {
+                username: '',
+                isAdmin: false
+            },
+            isAuthenticated: false
+        }
     }
 
     authenticate = user => {
@@ -80,6 +90,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/" render={ props => <Auth {...props} signUp={this.signUp} login={this.login} />} />
                     <Route path="/profile" render={ props => <Profile {...props} user={this.state.user} />} />
+                    <Route path="/scores" render={ props => <Scores {...props} scores={this.state.scores}/>} />
                 </Switch>
                 <Footer />
             </div>
