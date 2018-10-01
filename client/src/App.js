@@ -4,6 +4,7 @@ import Auth from './components/Auth'
 import Profile from './components/Profile'
 import Scores from './components/Scores'
 import './app.css'
+import axios from 'axios'
 
 let postsAxios = axios.create()
        
