@@ -1,14 +1,31 @@
 import React from 'react'
+import axios from 'axios'
 import USAMap from 'react-usa-map'
 import '../app.css'
 
-class Child extends React.Component {
+class Game extends React.Component {
     constructor(){
         super()
         this.state = {
             correctAnswers: [],
-            wrongAnswers: []
+            wrongAnswers: [],
+            randomState: ''
         }
+    }
+
+    componentDidMount(){
+        axios.get('/states').then(res => {
+            // console.log(res.data)
+        })
+    }
+
+    randomState = () => {
+        let randomNum = Math.floor((Math.random() * 52) + 1)
+        axios.get('/states').then(res => {
+            this.setState({
+                randomState: res.data[randomNum].abbreviation
+            })
+        })
     }
 
     mapHandler = event => {
@@ -18,10 +35,10 @@ class Child extends React.Component {
             }))
             alert("You are incorrect. Try again.")  
         } else {
-            console.log
             this.setState(prevState => ({
                 correctAnswers: [...prevState.correctAnswers, "1"]
             }))
+            this.randomState()
             alert("Correct!")
         }
         // alert(event.target.dataset.name)
@@ -30,15 +47,17 @@ class Child extends React.Component {
     render(){
         console.log(`Wrong answers: ${this.state.wrongAnswers.length}`)
         console.log(`Correct answers: ${this.state.correctAnswers.length}`)
+        // console.log(this.state.randomState)
         const { authenticated } = this.props
         return (
             <div className="App">
                 <h1>US States Game</h1>
                 <p>Try your best at guessing at finding the correct state</p>
+                <p>Find {this.state.randomState}</p>
                 <USAMap onClick={this.mapHandler} />        
             </div>
         )
     }
 }
 
-export default Child
+export default Game
