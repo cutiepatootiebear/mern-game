@@ -29,7 +29,8 @@ class App extends React.Component {
         status: '',
         err: ''
       },
-      isAuthenticated: false
+      isAuthenticated: false,
+      loading: false
     };
   }
 
@@ -55,7 +56,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        console.log(err);
+        this.authErr(err.response.status, err.response.data.err)
       });
   };
 
@@ -69,7 +70,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        console.log(err);
+        this.authErr(err.response.status, err.response.data.err)
       });
   };
 
@@ -83,7 +84,7 @@ class App extends React.Component {
           isAdmin: false
         },
         isAuthenticated: false,
-        posts: []
+        loading: false
       },
       () => {
         this.props.history.push("/");
@@ -104,7 +105,8 @@ class App extends React.Component {
         user: {
           ...user
         },
-        isAuthenticated: true
+        isAuthenticated: true,
+        loading: false
       }),
       () => {
         this.getData();
@@ -128,16 +130,21 @@ class App extends React.Component {
       authErr: {
         status: status,
         err: err
-      }
+      },
+      loading: false
     }))
   }
 
   render() {
     // console.log(this.state.scores)
-    const { isAuthenticated } = this.state
+    // console.log(this.state.authErr.status)
+    const { isAuthenticated, loading } = this.state
     return (
       <div>
         {isAuthenticated && <Navbar logout={this.logout} authenticated={this.authenticate} />}
+        {loading  
+                    ? <div>Loading...</div>
+                    :
         <Switch>
           <Route
             exact
@@ -160,6 +167,7 @@ class App extends React.Component {
             render={props => <Scores {...props} scores={this.state.scores} />}
           />
         </Switch>
+        }
         <Footer />
       </div>
     );

@@ -19,6 +19,7 @@ class Auth extends Component {
   render() {
 
     const { status, err } = this.props.authErr
+    console.log(status)
     let errMsg = ''
     if(status < 500 && status > 399){
       errMsg = err
@@ -48,18 +49,17 @@ class Auth extends Component {
           ? <Form
               inputs={{ username: "", password: "" }}
               submit={inputs => this.props.signUp(inputs)}
-              render={props => <FormsPage {...props} btnText="Sign Up" />}
+              render={props => <FormsPage {...props} btnText="Sign Up" errMsg={errMsg} /> }
               reset
             />
           
           : <Form
               inputs={{ username: "", password: "" }}
               submit={inputs => this.props.login(inputs)}
-              render={props => <FormsPage {...props} btnText="Login" />}
+              render={props => <FormsPage {...props} btnText="Login" errMsg={errMsg}/>}
               reset
             />
         }
-        <p>{errMsg}</p>
       </div>
     );
   }
