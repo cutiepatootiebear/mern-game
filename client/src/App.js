@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import ProtectedRoute from './shared/ProtectedRoute'
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
@@ -24,8 +25,17 @@ class App extends React.Component {
         username: "",
         isAdmin: false
       },
-      isAuthenticated: false
+      authErr: {
+        status: '',
+        err: ''
+      },
+      isAuthenticated: false,
+      loading: false
     };
+  }
+
+  componentDidMount(){
+    this.verify()
   }
 
   getData = () => {
@@ -46,7 +56,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        console.log(err);
+        this.authErr(err.response.status, err.response.data.err)
       });
   };
 
@@ -60,7 +70,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        console.log(err);
+        this.authErr(err.response.status, err.response.data.err)
       });
   };
 
@@ -74,7 +84,7 @@ class App extends React.Component {
           isAdmin: false
         },
         isAuthenticated: false,
-        posts: []
+        loading: false
       },
       () => {
         this.props.history.push("/");
@@ -95,7 +105,8 @@ class App extends React.Component {
         user: {
           ...user
         },
-        isAuthenticated: true
+        isAuthenticated: true,
+        loading: false
       }),
       () => {
         this.getData();
@@ -103,28 +114,60 @@ class App extends React.Component {
     );
   };
 
+  verify = () => {
+    postsAxios.get('/api/profile').then(res => {
+      let { user } = res.data
+      this.authenticate(user)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  authErr = (status, err) => {
+    this.setState(prevState => ({
+      ...prevState,
+      authErr: {
+        status: status,
+        err: err
+      },
+      loading: false
+    }))
+  }
+
   render() {
     // console.log(this.state.scores)
+    // console.log(this.state.authErr.status)
+    const { isAuthenticated, loading } = this.state
     return (
       <div>
-        <Navbar logout={this.logout} authenticated={this.authenticate} />
+        {isAuthenticated && <Navbar logout={this.logout} authenticated={this.authenticate} />}
+        {loading  
+                    ? <div>Loading...</div>
+                    :
         <Switch>
           <Route
             exact
             path="/"
-            render={props => (
-              <Auth {...props} signUp={this.signUp} login={this.login} />
-            )}
+            render={props => isAuthenticated
+              ? <Redirect to='/scores/' />
+              : <Auth {...props} signUp={this.signUp} login={this.login} authErr={this.state.authErr}/>
+            }
           />
-          <Route
+          <ProtectedRoute
             path="/profile"
+            redirectTo='/'
+            isAuthenticated={ isAuthenticated }
             render={props => <Profile {...props} user={this.state.user} />}
           />
-          <Route
+          <ProtectedRoute
             path="/scores"
+            redirectTo='/'
+            isAuthenticated={ isAuthenticated }
             render={props => <Scores {...props} scores={this.state.scores} />}
           />
         </Switch>
+        }
         <Footer />
       </div>
     );

@@ -1,16 +1,18 @@
-const express = require("express");
-const morgan = require("morgan");
-const app = express();
-const mongoose = require("mongoose");
-const PORT = process.env.PORT || 8080;
+const express = require("express")
+const morgan = require("morgan")
+const app = express()
+const mongoose = require("mongoose")
+const PORT = process.env.PORT || 8080
 const authRoute = require('./routes/auth')
-const scoreRoutes = require("./routes/scoreRoutes");
-const expressJwt = require("express-jwt")
+const scoreRoutes = require("./routes/scoreRoutes")
 require("dotenv").config()
+const profileRoutes = require('./routes/profile')
+const expressJwt = require("express-jwt")
+
 
 // Middlwares to be used on every request that comes into the server
-app.use(morgan("dev"));
-app.use(express.json());
+app.use(morgan("dev"))
+app.use(express.json())
 
 // Connects to Mongodb on your local hard drive to save your db
 mongoose
@@ -31,8 +33,9 @@ mongoose
 app.use("/api", expressJwt({secret: process.env.SECRET}))
 
 app.use("/auth", authRoute)
-app.use("/api/scores", scoreRoutes);
+app.use("/api/scores", scoreRoutes)
+app.use('/api/profile', profileRoutes)
 
 app.listen(PORT, () => {
-  console.log(`Server is running port ${PORT}`);
-});
+  console.log(`Server is running port ${PORT}`)
+})
