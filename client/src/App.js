@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import ProtectedRoute from './shared/ProtectedRoute'
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
@@ -24,8 +25,16 @@ class App extends React.Component {
         username: "",
         isAdmin: false
       },
+      authErr: {
+        status: '',
+        err: ''
+      },
       isAuthenticated: false
     };
+  }
+
+  componentDidMount(){
+    this.verify()
   }
 
   getData = () => {
@@ -103,25 +112,51 @@ class App extends React.Component {
     );
   };
 
+  verify = () => {
+    postsAxios.get('/api/profile').then(res => {
+      let { user } = res.data
+      this.authenticate(user)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  authErr = (status, err) => {
+    this.setState(prevState => ({
+      ...prevState,
+      authErr: {
+        status: status,
+        err: err
+      }
+    }))
+  }
+
   render() {
     // console.log(this.state.scores)
+    const { isAuthenticated } = this.state
     return (
       <div>
-        <Navbar logout={this.logout} authenticated={this.authenticate} />
+        {isAuthenticated && <Navbar logout={this.logout} authenticated={this.authenticate} />}
         <Switch>
           <Route
             exact
             path="/"
-            render={props => (
-              <Auth {...props} signUp={this.signUp} login={this.login} />
-            )}
+            render={props => isAuthenticated
+              ? <Redirect to='/scores/' />
+              : <Auth {...props} signUp={this.signUp} login={this.login} authErr={this.state.authErr}/>
+            }
           />
-          <Route
+          <ProtectedRoute
             path="/profile"
+            redirectTo='/'
+            isAuthenticated={ isAuthenticated }
             render={props => <Profile {...props} user={this.state.user} />}
           />
-          <Route
+          <ProtectedRoute
             path="/scores"
+            redirectTo='/'
+            isAuthenticated={ isAuthenticated }
             render={props => <Scores {...props} scores={this.state.scores} />}
           />
         </Switch>

@@ -17,6 +17,15 @@ class Auth extends Component {
   };
 
   render() {
+
+    const { status, err } = this.props.authErr
+    let errMsg = ''
+    if(status < 500 && status > 399){
+      errMsg = err
+    } else if(status > 499){
+      errMsg = err
+    }
+
     return (
       <div className="auth-page">
         {this.state.formToggle ? (
@@ -35,21 +44,22 @@ class Auth extends Component {
         ) : (
           <span onClick={this.toggle}>-New Member?</span>
         )}
-        {!this.state.formToggle ? (
-          <Form
-            inputs={{ username: "", password: "" }}
-            submit={inputs => this.props.signUp(inputs)}
-            render={props => <FormsPage {...props} btnText="Sign Up" />}
-            reset
-          />
-        ) : (
-          <Form
-            inputs={{ username: "", password: "" }}
-            submit={inputs => this.props.login(inputs)}
-            render={props => <FormsPage {...props} btnText="Login" />}
-            reset
-          />
-        )}
+        {!this.state.formToggle  
+          ? <Form
+              inputs={{ username: "", password: "" }}
+              submit={inputs => this.props.signUp(inputs)}
+              render={props => <FormsPage {...props} btnText="Sign Up" />}
+              reset
+            />
+          
+          : <Form
+              inputs={{ username: "", password: "" }}
+              submit={inputs => this.props.login(inputs)}
+              render={props => <FormsPage {...props} btnText="Login" />}
+              reset
+            />
+        }
+        <p>{errMsg}</p>
       </div>
     );
   }
