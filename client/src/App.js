@@ -5,8 +5,8 @@ import Auth from './components/Auth'
 import Profile from './components/Profile'
 import Scores from './components/Scores'
 import Footer from './components/Footer'
-import './app.css'
 import axios from 'axios'
+import FormsPage from './components/FormsPage'
 
 let postsAxios = axios.create()
        
@@ -98,6 +98,7 @@ class App extends React.Component {
         return(
             <div>
                 <Navbar logout={this.logout} authenticated={this.authenticate}/>
+                {/* <FormsPage /> */}
                 <Switch>
                     <Route exact path="/" render={ props => <Auth {...props} signUp={this.signUp} login={this.login} />} />
                     <Route path="/profile" render={ props => <Profile {...props} user={this.state.user} />} />
