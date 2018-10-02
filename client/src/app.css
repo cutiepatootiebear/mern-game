@@ -1,0 +1,13 @@
+.form-dark {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#root {
+    background: #6a737f;
+}
+
+.textStyles{
+  color: "#fff !important";
+}
