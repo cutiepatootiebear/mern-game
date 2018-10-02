@@ -1,114 +1,134 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Switch, Route, withRouter } from 'react-router-dom'
-import Auth from './components/Auth'
-import Profile from './components/Profile'
-import Scores from './components/Scores'
-import Footer from './components/Footer'
-import axios from 'axios'
-import FormsPage from './components/FormsPage'
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Switch, Route, withRouter } from "react-router-dom";
+import Auth from "./components/Auth";
+import Profile from "./components/Profile";
+import Scores from "./components/Scores";
+import Footer from "./components/Footer";
+import axios from "axios";
 
-let postsAxios = axios.create()
-       
-postsAxios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    config.headers.Authorization = `Bearer ${token}`;
-    return config;
-})
+let postsAxios = axios.create();
 
+postsAxios.interceptors.request.use(config => {
+  const token = localStorage.getItem("token");
+  config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 class App extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            scores: [],
-            user: {
-                username: '',
-                isAdmin: false
-            },
-            isAuthenticated: false
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      scores: [],
+      user: {
+        username: "",
+        isAdmin: false
+      },
+      isAuthenticated: false
+    };
+  }
 
-    getData = () => {
-        postsAxios.get("/api/scores").then(res => {
-            this.setState({
-                scores: res.data
-            })
-        })
-    }
+  getData = () => {
+    postsAxios.get("/api/scores").then(res => {
+      this.setState({
+        scores: res.data
+      });
+    });
+  };
 
-    signUp = userInfo => {
-        axios.post("/auth/signup", userInfo).then(res => {
-            const { token, user } = res.data
-            localStorage.setItem("token", token)
-            localStorage.setItem("user", JSON.stringify(user))
-            this.authenticate(user)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+  signUp = userInfo => {
+    axios
+      .post("/auth/signup", userInfo)
+      .then(res => {
+        const { token, user } = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        this.authenticate(user);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-    login = userInfo => {
-        axios.post("/auth/login", userInfo).then(res => {
-            const { token, user } = res.data
-            localStorage.setItem("token", token)
-            localStorage.setItem("user", JSON.stringify(user))
-            this.authenticate(user)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+  login = userInfo => {
+    axios
+      .post("/auth/login", userInfo)
+      .then(res => {
+        const { token, user } = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        this.authenticate(user);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-    logout = () => {
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-        this.setState({
-            user: {
-                username: '',
-                isAdmin: false
-            },
-            isAuthenticated: false,
-            posts: []
-        }, () => {
-            this.props.history.push('/')
-        })
-    }
+  logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState(
+      {
+        user: {
+          username: "",
+          isAdmin: false
+        },
+        isAuthenticated: false,
+        posts: []
+      },
+      () => {
+        this.props.history.push("/");
+      }
+    );
+  };
 
-    handleChange = e => {
-        const { name, value } = e.target
-        this.setState({
-            [name]: value
-        })
-    }
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-    authenticate = user => {
-        this.setState(prevState => ({
-            user: {
-                ...user
-            },
-            isAuthenticated: true
-        }), () => {
-            this.getData()
-        })
-    }
+  authenticate = user => {
+    this.setState(
+      prevState => ({
+        user: {
+          ...user
+        },
+        isAuthenticated: true
+      }),
+      () => {
+        this.getData();
+      }
+    );
+  };
 
-    render(){
-        // console.log(this.state.scores)
-        return(
-            <div>
-                <Navbar logout={this.logout} authenticated={this.authenticate}/>
-                {/* <FormsPage /> */}
-                <Switch>
-                    <Route exact path="/" render={ props => <Auth {...props} signUp={this.signUp} login={this.login} />} />
-                    <Route path="/profile" render={ props => <Profile {...props} user={this.state.user} />} />
-                    <Route path="/scores" render={ props => <Scores {...props} scores={this.state.scores}/>} />
-                </Switch>
-                <Footer />
-            </div>
-        )
-    }
-
+  render() {
+    // console.log(this.state.scores)
+    return (
+      <div>
+        <Navbar logout={this.logout} authenticated={this.authenticate} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Auth {...props} signUp={this.signUp} login={this.login} />
+            )}
+          />
+          <Route
+            path="/profile"
+            render={props => <Profile {...props} user={this.state.user} />}
+          />
+          <Route
+            path="/scores"
+            render={props => <Scores {...props} scores={this.state.scores} />}
+          />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default withRouter(App)
+export default withRouter(App);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import AuthForm from "./AuthForm";
 import Form from "../shared/Form";
 import FormsPage from "./FormsPage";
 
