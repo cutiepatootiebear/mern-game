@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 8080
 const authRoute = require('./routes/auth')
 const scoreRoutes = require("./routes/scoreRoutes")
+const States = require('./routes/us-states')
 require("dotenv").config()
 const profileRoutes = require('./routes/profile')
 const expressJwt = require("express-jwt")
@@ -32,9 +33,10 @@ mongoose
 // requested by a front end
 app.use("/api", expressJwt({secret: process.env.SECRET}))
 
+app.use("/states", States)
 app.use("/auth", authRoute)
 app.use("/api/scores", scoreRoutes)
-// app.use('/api/profile', profileRoutes)
+
 
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`)
