@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
-import ProtectedRoute from './shared/ProtectedRoute'
+import ProtectedRoute from "./shared/ProtectedRoute";
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import axios from "axios";
 
 let postsAxios = axios.create();
@@ -26,16 +26,16 @@ class App extends React.Component {
         isAdmin: false
       },
       authErr: {
-        status: '',
-        err: ''
+        status: "",
+        err: ""
       },
       isAuthenticated: false,
       loading: false
     };
   }
 
-  componentDidMount(){
-    this.verify()
+  componentDidMount() {
+    this.verify();
   }
 
   getData = () => {
@@ -56,7 +56,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        this.authErr(err.response.status, err.response.data.err)
+        this.authErr(err.response.status, err.response.data.err);
       });
   };
 
@@ -70,7 +70,7 @@ class App extends React.Component {
         this.authenticate(user);
       })
       .catch(err => {
-        this.authErr(err.response.status, err.response.data.err)
+        this.authErr(err.response.status, err.response.data.err);
       });
   };
 
@@ -115,14 +115,16 @@ class App extends React.Component {
   };
 
   verify = () => {
-    postsAxios.get('/api/profile').then(res => {
-      let { user } = res.data
-      this.authenticate(user)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
+    postsAxios
+      .get("/api/profile")
+      .then(res => {
+        let { user } = res.data;
+        this.authenticate(user);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   authErr = (status, err) => {
     this.setState(prevState => ({
@@ -132,43 +134,52 @@ class App extends React.Component {
         err: err
       },
       loading: false
-    }))
-  }
+    }));
+  };
 
   render() {
     // console.log(this.state.scores)
     // console.log(this.state.authErr.status)
-    const { isAuthenticated, loading } = this.state
+    const { isAuthenticated, loading } = this.state;
     return (
       <div>
-        {isAuthenticated && <Navbar logout={this.logout} authenticated={this.authenticate} />}
-        {loading  
-                    ? <div>Loading...</div>
-                    :
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => isAuthenticated
-              ? <Redirect to='/scores/' />
-              : <Auth {...props} signUp={this.signUp} login={this.login} authErr={this.state.authErr}/>
-            }
-          />
-          <ProtectedRoute
-            path="/profile"
-            redirectTo='/'
-            isAuthenticated={ isAuthenticated }
-            render={props => <Profile {...props} user={this.state.user} />}
-          />
-          <ProtectedRoute
-            path="/scores"
-            redirectTo='/'
-            isAuthenticated={ isAuthenticated }
-            render={props => <Scores {...props} scores={this.state.scores} />}
-          />
-        </Switch>
-        }
-        <Footer />
+        {isAuthenticated && (
+          <Navbar logout={this.logout} authenticated={this.authenticate} />
+        )}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props =>
+                isAuthenticated ? (
+                  <Redirect to="/scores/" />
+                ) : (
+                  <Auth
+                    {...props}
+                    signUp={this.signUp}
+                    login={this.login}
+                    authErr={this.state.authErr}
+                  />
+                )
+              }
+            />
+            <ProtectedRoute
+              path="/profile"
+              redirectTo="/"
+              isAuthenticated={isAuthenticated}
+              render={props => <Profile {...props} user={this.state.user} />}
+            />
+            <ProtectedRoute
+              path="/scores"
+              redirectTo="/"
+              isAuthenticated={isAuthenticated}
+              render={props => <Scores {...props} scores={this.state.scores} />}
+            />
+          </Switch>
+        )}
       </div>
     );
   }
