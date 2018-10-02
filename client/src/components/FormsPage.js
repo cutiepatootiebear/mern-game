@@ -112,9 +112,8 @@ class FormsPage extends React.Component {
                   {/* bring in toggle code from Auth.js */}
                   <Col md="12">
                     <p className="font-small white-text d-flex justify-content-end" onClick={this.props.toggle}>
-                      {/* Have an account?{" "} */}
+                      {/* Have an account? */}
                       <a href="#" className="green-text ml-1 font-weight-bold">
-                        {" "}
                         {/* Log in */}
                         {this.props.altBtn}
                       </a>
