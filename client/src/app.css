@@ -13,3 +13,11 @@ body {
 .textStyles {
   color: "#fff !important";
 }
+
+path {
+  pointer-events: all;
+}
+path:hover {
+  opacity: 0.50;
+  cursor: pointer;
+}

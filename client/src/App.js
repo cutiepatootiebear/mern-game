@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
+import Game from "./components/Game"
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
@@ -155,7 +156,7 @@ class App extends React.Component {
               path="/"
               render={props =>
                 isAuthenticated ? (
-                  <Redirect to="/scores/" />
+                  <Redirect to="/game" />
                 ) : (
                   <Auth
                     {...props}
@@ -177,6 +178,12 @@ class App extends React.Component {
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => <Scores {...props} scores={this.state.scores} />}
+            />
+            <ProtectedRoute
+              path="/game"
+              redirectTo="/"
+              isAuthenticated={isAuthenticated}
+              render={props => <Game />}
             />
           </Switch>
         )}
