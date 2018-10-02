@@ -34,7 +34,7 @@ app.use("/api", expressJwt({secret: process.env.SECRET}))
 
 app.use("/auth", authRoute)
 app.use("/api/scores", scoreRoutes)
-app.use('/api/profile', profileRoutes)
+// app.use('/api/profile', profileRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`)
