@@ -5,9 +5,9 @@ const Navbar = props => {
     const { authenticated, logout } = props
     return (
         <div>
-            <Link to="/scores">Scores</Link>
+            {/* <Link to="/scores">Scores</Link>
             <Link to="/profile">Profile</Link>
-            <Link to="/game">Game</Link>
+            <Link to="/game">Game</Link> */}
             {authenticated && <button onClick={logout}>Logout</button>}
         </div>
     )

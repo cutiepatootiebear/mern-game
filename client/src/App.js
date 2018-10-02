@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from 'react'
 import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
-import Game from "./components/Game"
+import Game from "./components/Game";
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
@@ -143,7 +143,7 @@ class App extends React.Component {
     // console.log(this.state.authErr.status)
     const { isAuthenticated, loading } = this.state;
     return (
-      <div>
+      <div className="style">
         {isAuthenticated && (
           <Navbar logout={this.logout} authenticated={this.authenticate} />
         )}
@@ -167,23 +167,29 @@ class App extends React.Component {
                 )
               }
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               path="/profile"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => <Profile {...props} user={this.state.user} />}
-            />
-            <ProtectedRoute
+            /> */}
+            {/* <ProtectedRoute
               path="/scores"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => <Scores {...props} scores={this.state.scores} />}
-            />
+            /> */}
             <ProtectedRoute
               path="/game"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
-              render={props => <Game />}
+              render={props => (
+                <Fragment>
+                  <Profile {...props} user={this.state.user} />
+                  <Scores {...props} scores={this.state.scores} />
+                  <Game />
+                </Fragment>
+              )}
             />
           </Switch>
         )}
