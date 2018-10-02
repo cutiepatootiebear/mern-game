@@ -4,7 +4,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Auth from "./components/Auth";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import axios from "axios";
 
 let postsAxios = axios.create();
@@ -125,7 +125,7 @@ class App extends React.Component {
             render={props => <Scores {...props} scores={this.state.scores} />}
           />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

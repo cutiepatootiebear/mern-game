@@ -4,8 +4,9 @@
   padding: 10px;
 }
 
-#root {
-    background: #6a737f;
+body {
+    background-color: #6a737f !important;
+    height: 100vh !important;
 }
 
 .textStyles{

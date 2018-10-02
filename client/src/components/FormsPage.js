@@ -16,6 +16,10 @@ class FormsPage extends React.Component {
     let styles = {
       borderRadius: "20px"
     };
+
+    let inputText = {
+      color: "white"
+    };
     const {
       inputs: { username, password },
       handleChange,
@@ -51,6 +55,7 @@ class FormsPage extends React.Component {
                     name="username"
                     group type="text"
                     validate
+                    style={inputText}
                   />
                   <Input 
                   label="Your password" 
@@ -59,6 +64,7 @@ class FormsPage extends React.Component {
                   onChange={handleChange}
                   value={password}
                   name="password"
+                  style={inputText}
                   />
                   <div className="md-form pb-3">
                     <div className="form-check my-4">
@@ -97,15 +103,30 @@ class FormsPage extends React.Component {
                       </Button>
                     </div>
                   </Row>
+
+
+
+
+
+                  {/* bring in toggle code from Auth.js */}
                   <Col md="12">
-                    <p className="font-small white-text d-flex justify-content-end">
-                      Have an account?{" "}
+                    <p className="font-small white-text d-flex justify-content-end" onClick={this.props.toggle}>
+                      {/* Have an account?{" "} */}
                       <a href="#" className="green-text ml-1 font-weight-bold">
                         {" "}
-                        Log in
+                        {/* Log in */}
+                        {this.props.altBtn}
                       </a>
                     </p>
                   </Col>
+
+                       
+
+
+
+
+
+
                 </div>
               </Card>
             </Col>
