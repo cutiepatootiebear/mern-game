@@ -2,8 +2,7 @@ const express = require("express");
 const scoreRouter = express.Router();
 const Score = require("../models/scores");
 
-scoreRouter
-  .route("/")
+scoreRouter.route("/")
   .get((req, res) => {
     Score.find({user: req.user._id}, (err, text) => {
       if (err) return res.status(500).send(err);

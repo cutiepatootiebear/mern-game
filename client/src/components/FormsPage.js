@@ -66,6 +66,7 @@ class FormsPage extends React.Component {
                   name="password"
                   style={inputText}
                   />
+                  <p>{this.props.errMsg}</p>
                   <div className="md-form pb-3">
                     <div className="form-check my-4">
                       {/* <input
