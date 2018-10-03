@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import Game from "./components/Game";
+import Globe from "./components/Globe"
 import Auth from "./components/Auth";
-import Profile from "./components/Profile";
-import Scores from "./components/Scores";
+// import Profile from "./components/Profile";
+// import Scores from "./components/Scores";
 // import Footer from "./components/Footer";
 import axios from "axios";
 
@@ -144,9 +145,9 @@ class App extends React.Component {
     const { isAuthenticated, loading, user } = this.state;
     return (
       <div className="style">
-        {/* {isAuthenticated && (
+        {isAuthenticated && (
           <Navbar logout={this.logout} authenticated={this.authenticate} />
-        )} */}
+        )}
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -173,13 +174,19 @@ class App extends React.Component {
               isAuthenticated={isAuthenticated}
               render={props => <Profile {...props} user={this.state.user} />}
             /> */}
-            {/* <ProtectedRoute
-              path="/scores"
+            <ProtectedRoute
+              path="/game"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
-              render={props => <Scores {...props} scores={this.state.scores} />}
-            /> */}
+              render={props => <Game {...props} scores={this.state.scores} />}
+            />
             <ProtectedRoute
+              path="/globe"
+              redirectTo="/"
+              isAuthenticated={isAuthenticated}
+              render={props => <Globe {...props} scores={this.state.scores} />}
+            />
+            {/* <ProtectedRoute
               path="/game"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
@@ -189,7 +196,7 @@ class App extends React.Component {
                   <Game />
                   <Scores {...props} scores={this.state.scores} />
                 </Fragment>
-              )}
+              )} */}
             />
           </Switch>
         )}
