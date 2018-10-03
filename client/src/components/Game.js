@@ -47,8 +47,6 @@ class Game extends React.Component {
     render(){
         console.log(`Wrong answers: ${this.state.wrongAnswers.length}`)
         console.log(`Correct answers: ${this.state.correctAnswers.length}`)
-        // console.log(this.state.randomState)
-        const { authenticated } = this.props
         return (
             <div className="App">
                 <h1>US States Game</h1>
