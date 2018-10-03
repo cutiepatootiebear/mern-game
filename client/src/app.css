@@ -38,7 +38,7 @@ path:hover {
   background-color: #4d545c;
 }
 
-.profile h1 h2{
+.profile h1 {
   margin-left: 20px;
 }
 
@@ -72,10 +72,16 @@ path:hover {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
+  color: black;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 8px 8px 12px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
   z-index: 1;
+  margin-top: 9px;
+}
+
+.navstyle:hover {
+  color: orange;
 }
 
 .navstyle:hover .score-num {
