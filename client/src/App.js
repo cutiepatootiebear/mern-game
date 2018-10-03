@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import Game from "./components/Game";
@@ -141,12 +141,12 @@ class App extends React.Component {
   render() {
     // console.log(this.state.scores)
     // console.log(this.state.authErr.status)
-    const { isAuthenticated, loading } = this.state;
+    const { isAuthenticated, loading, user } = this.state;
     return (
       <div className="style">
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
           <Navbar logout={this.logout} authenticated={this.authenticate} />
-        )}
+        )} */}
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -185,9 +185,9 @@ class App extends React.Component {
               isAuthenticated={isAuthenticated}
               render={props => (
                 <Fragment>
-                  <Profile {...props} user={this.state.user} />
-                  <Scores {...props} scores={this.state.scores} />
+                  <Profile {...props} user={this.state.user} scores={this.state.scores} logout={this.logout} authenticated={this.authenticate} />
                   <Game />
+                  <Scores {...props} scores={this.state.scores} />
                 </Fragment>
               )}
             />
