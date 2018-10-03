@@ -1,0 +1,9 @@
+{
+    "search.exclude": {
+        "**/bower_components": false,
+        "**/node_modules": false
+    },
+    "search.globalFindClipboard": true,
+    "search.smartCase": true,
+    "search.useIgnoreFiles": false
+}
