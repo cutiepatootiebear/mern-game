@@ -1,11 +1,3 @@
-/* .style {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  height: 100vh;
-  align-items: center;
-} */
-
 .container {
   display: flex;
   justify-content: center;
@@ -27,7 +19,7 @@ path {
 }
 
 path:hover {
-  opacity: 0.50;
+  opacity: 0.5;
   cursor: pointer;
 }
 
@@ -91,4 +83,3 @@ path:hover {
 .navstyle:hover .score-num {
   display: block
 }
-
