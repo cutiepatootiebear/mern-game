@@ -1,9 +1,11 @@
 /* .style {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
   height: 100vh;
   align-items: center;
 } */
+
 .container {
   display: flex;
   justify-content: center;
@@ -23,7 +25,70 @@ body {
 path {
   pointer-events: all;
 }
+
 path:hover {
   opacity: 0.50;
   cursor: pointer;
 }
+
+.navbar {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 150px; */
+  display: flex;
+  align-content: space-between;
+  color: #4caf50;
+  background-color: #4d545c;
+}
+
+.profile h1 {
+  margin-left: 20px;
+}
+
+.logout-button {
+  border-radius: 20px;
+  background-color: limegreen;
+  color:white;
+  border-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px; */
+}
+
+.logout-button:hover {
+  transition: 0.3s;
+  background-color: red;
+  /* font-size: 20px; */
+}
+
+.App {
+  margin-top: 25px;
+  margin-left: 250px;
+}
+
+.navstyle {
+  display: block;
+  position: relative;
+}
+
+.score-num {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  color: black;
+  min-width: 160px;
+  box-shadow: 8px 8px 12px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  margin-top: 9px;
+}
+
+.navstyle:hover {
+  color: orange;
+}
+
+.navstyle:hover .score-num {
+  display: block
+}
+
