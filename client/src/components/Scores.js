@@ -2,7 +2,7 @@ import React from 'react'
 
 const Scores = props => {
     return (
-        <div>
+        <div className="scores">
             {props.scores.map(obj => <h2>{obj.score}</h2>)}
         </div>
     )

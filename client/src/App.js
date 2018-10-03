@@ -3,9 +3,10 @@ import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import Game from "./components/Game";
+import Globe from "./components/Globe"
 import Auth from "./components/Auth";
-import Profile from "./components/Profile";
-import Scores from "./components/Scores";
+// import Profile from "./components/Profile";
+// import Scores from "./components/Scores";
 // import Footer from "./components/Footer";
 import axios from "axios";
 
@@ -141,7 +142,7 @@ class App extends React.Component {
   render() {
     // console.log(this.state.scores)
     // console.log(this.state.authErr.status)
-    const { isAuthenticated, loading } = this.state;
+    const { isAuthenticated, loading, user } = this.state;
     return (
       <div className="style">
         {isAuthenticated && (
@@ -173,23 +174,29 @@ class App extends React.Component {
               isAuthenticated={isAuthenticated}
               render={props => <Profile {...props} user={this.state.user} />}
             /> */}
-            {/* <ProtectedRoute
-              path="/scores"
+            <ProtectedRoute
+              path="/game"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
-              render={props => <Scores {...props} scores={this.state.scores} />}
-            /> */}
+              render={props => <Game {...props} scores={this.state.scores} />}
+            />
             <ProtectedRoute
+              path="/globe"
+              redirectTo="/"
+              isAuthenticated={isAuthenticated}
+              render={props => <Globe {...props} scores={this.state.scores} />}
+            />
+            {/* <ProtectedRoute
               path="/game"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => (
                 <Fragment>
-                  <Profile {...props} user={this.state.user} />
-                  <Scores {...props} scores={this.state.scores} />
+                  <Profile {...props} user={this.state.user} scores={this.state.scores} logout={this.logout} authenticated={this.authenticate} />
                   <Game />
+                  <Scores {...props} scores={this.state.scores} />
                 </Fragment>
-              )}
+              )} */}
             />
           </Switch>
         )}

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Navbar = props => {
     const { authenticated, logout } = props
     return (
-        <div>
-            {/* <Link to="/scores">Scores</Link>
-            <Link to="/profile">Profile</Link>
-            <Link to="/game">Game</Link> */}
-            {authenticated && <button onClick={logout}>Logout</button>}
+        <div className='navbar'>
+            {/* <Link to="/profile">Profile</Link> */}
+            <Link to="/game">Game</Link>
+            <Link to="/globe">Globe</Link>
+            {authenticated && <button onClick={logout} className='logout-button'>Logout</button>}
         </div>
     )
 }
