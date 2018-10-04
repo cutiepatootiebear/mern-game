@@ -35,30 +35,36 @@ class Game extends React.Component {
 
     mapHandler = event => {
         if(event.target.dataset.name !== this.state.randomState){
-            this.setState(prevState => ({
-                wrongAnswers: [...prevState.wrongAnswers, "1"],
-                message: 'WRONG! Try again'
-            }))
-            // alert("You are incorrect. Try again.")  
+            if(this.state.wrongAnswers.length > 3){
+                const newScore = {
+                    score: this.state.correctAnswers.length
+                }
+                axios.post('/api/scores', newScore).then(res => {
+                this.gameOver()
+            })
+            } else {
+                this.setState(prevState => ({
+                    wrongAnswers: [...prevState.wrongAnswers, "1"],
+                    message: 'WRONG! Try again'
+                }))
+            }
         } else {
             this.setState(prevState => ({
                 correctAnswers: [...prevState.correctAnswers, "1"],
-                message: 'CORRECT! Keep going!'
+                message: ''
             }))
+            alert("Correct! Keep going!")
             this.randomState()
-            // alert("Correct!")
         }
         // alert(event.target.dataset.name)
     }
 
     gameOver = () => {
-        if(this.state.wrongAnswers.length > 3){
-            alert("GAME OVER")
-            this.setState({
-                wrongAnswers:[],
-                correctAnswers: []
-            })
-        }
+        alert("GAME OVER\n Score successfully uploaded")
+        this.setState({
+            wrongAnswers:[],
+            correctAnswers: []
+        })
     }
 
     render(){
