@@ -98,11 +98,35 @@ path:hover {
   font-weight: bolder;
 }
 
-.score {
+.scoreText {
   float: right;
   margin-right: 6%;
   color: white;
-  font-size: 40px;
+  font-size: 27px;
+}
+
+.highScore {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 65px;
+}
+
+.scoreText2 {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 27px;
+}
+
+.score {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 65px;
 }
 
 .wrongAns {
@@ -110,7 +134,7 @@ path:hover {
   clear: right;
   margin-right: 6%;
   color: white;
-  font-size: 40px;
+  font-size: 65px;
 }
 
 .msg {

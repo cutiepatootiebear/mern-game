@@ -6,7 +6,7 @@ const scoreSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    score: String
+    score: Number
 })
 
 module.exports = mongoose.model('Score', scoreSchema)
