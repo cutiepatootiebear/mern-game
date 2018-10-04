@@ -1,14 +1,15 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import Navbar from "./components/Navbar";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import Game from "./components/Game";
-import Globe from "./components/Globe"
+import Globe from "./globe/pages/index";
 import Auth from "./components/Auth";
 // import Profile from "./components/Profile";
 // import Scores from "./components/Scores";
 // import Footer from "./components/Footer";
 import axios from "axios";
+import Particles from "react-particles-js";
 
 let postsAxios = axios.create();
 
@@ -142,12 +143,48 @@ class App extends React.Component {
   render() {
     // console.log(this.state.scores)
     // console.log(this.state.authErr.status)
-    const { isAuthenticated, loading, user } = this.state;
+    const { isAuthenticated, loading } = this.state;
     return (
       <div className="style">
+        {/* start particles */}
+        <div className="particles">
+          <Particles
+            params={{
+              particles: {
+                number: {
+                  value: 160,
+                  density: {
+                    enable: false
+                  }
+                },
+                size: {
+                  value: 3,
+                  random: true
+                },
+                line_linked: {
+                  enable: false
+                },
+                modes: {
+                  bubble: {
+                    distance: 250,
+                    // duration: 2,
+                    size: 0,
+                    opacity: 0
+                  }
+                  // repulse: {
+                  //   distance: 400,
+                  //   duration: 4
+                  // }
+                }
+              }
+            }}
+          />
+        </div>
+        {/* end particles */}
         {isAuthenticated && (
           <Navbar logout={this.logout} authenticated={this.authenticate} />
         )}
+
         {loading ? (
           <div>Loading...</div>
         ) : (

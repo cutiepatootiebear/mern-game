@@ -6,8 +6,18 @@
 }
 
 body {
-  background-color: #6a737f !important;
+  /* background-color: #6a737f !important; */
+  background-color: #001f3f !important;
   height: 100vh !important;
+}
+
+.particles canvas {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  z-index: -1;
 }
 
 .textStyles {
@@ -24,12 +34,22 @@ path:hover {
 }
 
 .navbar {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 150px; */
+  position: relative;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  display: -ms-flexbox;
+  -ms-flex-line-pack: justify;
   align-content: space-between;
   color: #4caf50;
-  background-color: #4d545c;
+  /* background-color: #4d545c; */
+  border-bottom: 2px solid #fff;
 }
 
 .profile h1 {
@@ -39,7 +59,7 @@ path:hover {
 .logout-button {
   border-radius: 20px;
   background-color: limegreen;
-  color:white;
+  color: white;
   border-style: none;
   padding-left: 20px;
   padding-right: 20px;
@@ -57,6 +77,7 @@ path:hover {
 .App {
   margin-top: 25px;
   margin-left: 250px;
+  color: #fff;
 }
 
 .navstyle {
@@ -70,7 +91,7 @@ path:hover {
   background-color: #f9f9f9;
   color: black;
   min-width: 160px;
-  box-shadow: 8px 8px 12px 0px rgba(0,0,0,0.2);
+  box-shadow: 8px 8px 12px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
   margin-top: 9px;
@@ -81,5 +102,5 @@ path:hover {
 }
 
 .navstyle:hover .score-num {
-  display: block
+  display: block;
 }
