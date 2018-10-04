@@ -25,7 +25,6 @@ class Game extends React.Component {
     componentDidMount(){
         axios.get('/states').then(res => {
             let randomNum = Math.floor((Math.random() * 52) + 1)
-            // console.log(res.data)
             this.setState({
                 randomState: res.data[randomNum].abbreviation
             })
@@ -76,8 +75,6 @@ class Game extends React.Component {
     }
 
     render(){
-        // console.log(`Wrong answers: ${this.state.wrongAnswers.length}`)
-        // console.log(`Correct answers: ${this.state.correctAnswers.length}`)
         return (
             <div className="App">
                 <h1>US States Game</h1>
