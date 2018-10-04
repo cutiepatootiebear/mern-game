@@ -42,7 +42,7 @@ class Game extends React.Component {
 
     mapHandler = event => {
         if(event.target.dataset.name !== this.state.randomState){
-            if(this.state.wrongAnswers.length > 3){
+            if(this.state.wrongAnswers.length > 1){
                 const newScore = {
                     score: this.state.correctAnswers.length
                 }
@@ -67,7 +67,7 @@ class Game extends React.Component {
     }
 
     gameOver = () => {
-        alert("GAME OVER\n Score successfully uploaded")
+        alert("GAME OVER\nScore successfully uploaded")
         this.setState({
             wrongAnswers:[],
             correctAnswers: []
@@ -77,12 +77,15 @@ class Game extends React.Component {
     render(){
         return (
             <div className="App">
-                <p className='title'>Try your best at finding the correct state</p>
-                <p className='randomState'>Find {this.state.randomState}</p>
+                <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
+                <p className='title'>Find the following:</p>
+                <p className='randomState'>{this.state.randomState}</p>
                 <p className='score'>Current Score: {this.state.correctAnswers.length}</p>
                 <p className='wrongAns'>Wrong Answers: {this.state.wrongAnswers.length}</p>
                 <p className='msg'>{this.state.message}</p>
-                <USAMap onClick={this.mapHandler} />        
+                <div className='map'>
+                    <USAMap onClick={this.mapHandler} />
+                </div>        
             </div>
         )
     }
