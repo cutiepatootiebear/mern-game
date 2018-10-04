@@ -75,9 +75,10 @@ path:hover {
 }
 
 .App {
-  margin-top: 25px;
-  margin-left: 250px;
-  color: #fff;
+  /* margin-top: 25px;
+  margin-left: 250px; */
+  /* display: grid;
+  grid-template-columns: '1fr' */
 }
 
 .navstyle {
@@ -102,5 +103,69 @@ path:hover {
 }
 
 .navstyle:hover .score-num {
-  display: block;
+  display: block
+}
+
+.title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.randomState {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.scoreText {
+  float: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 27px;
+}
+
+.highScore {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 65px;
+}
+
+.scoreText2 {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 27px;
+}
+
+.score {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 65px;
+}
+
+.wrongAns {
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  color: white;
+  font-size: 65px;
+}
+
+.msg {
+  float: right;
+  clear: right;
+  margin-right: 7%;
+  color: red;
+  font-size: 40px;
+}
+
+.map {
+  margin: auto;
+  width: 50%;
 }

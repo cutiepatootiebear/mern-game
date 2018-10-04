@@ -121,7 +121,7 @@ class App extends React.Component {
     postsAxios
       .get("/api/profile")
       .then(res => {
-        let { user } = res.data;
+        const { user } = res.data;
         this.authenticate(user);
       })
       .catch(err => {
@@ -141,8 +141,6 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state.scores)
-    // console.log(this.state.authErr.status)
     const { isAuthenticated, loading } = this.state;
     return (
       <div className="style">
