@@ -77,12 +77,11 @@ class Game extends React.Component {
     render(){
         return (
             <div className="App">
-                <h1>US States Game</h1>
-                <p>Try your best at guessing at finding the correct state</p>
-                <p>Find {this.state.randomState}</p>
-                <p>{this.state.message}</p>
-                <p>Current Score: {this.state.correctAnswers.length}</p>
-                <p>Wrong Answers: {this.state.wrongAnswers.length}</p>
+                <p className='title'>Try your best at finding the correct state</p>
+                <p className='randomState'>Find {this.state.randomState}</p>
+                <p className='score'>Current Score: {this.state.correctAnswers.length}</p>
+                <p className='wrongAns'>Wrong Answers: {this.state.wrongAnswers.length}</p>
+                <p className='msg'>{this.state.message}</p>
                 <USAMap onClick={this.mapHandler} />        
             </div>
         )

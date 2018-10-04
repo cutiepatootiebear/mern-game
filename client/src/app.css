@@ -55,8 +55,10 @@ path:hover {
 }
 
 .App {
-  margin-top: 25px;
-  margin-left: 250px;
+  /* margin-top: 25px;
+  margin-left: 250px; */
+  /* display: grid;
+  grid-template-columns: '1fr' */
 }
 
 .navstyle {
@@ -82,4 +84,21 @@ path:hover {
 
 .navstyle:hover .score-num {
   display: block
+}
+
+.title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.randomState {
+  text-align: center;
+  font-size: 50px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
