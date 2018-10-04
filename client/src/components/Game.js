@@ -3,6 +3,14 @@ import axios from 'axios'
 import USAMap from 'react-usa-map'
 import '../app.css'
 
+let postsAxios = axios.create();
+
+postsAxios.interceptors.request.use(config => {
+  const token = localStorage.getItem("token");
+  config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
 class Game extends React.Component {
     constructor(){
         super()
@@ -25,7 +33,7 @@ class Game extends React.Component {
     }
 
     randomState = () => {
-        let randomNum = Math.floor((Math.random() * 52) + 1)
+        let randomNum = Math.floor((Math.random() * 51) + 1)
         axios.get('/states').then(res => {
             this.setState({
                 randomState: res.data[randomNum].abbreviation
@@ -39,7 +47,7 @@ class Game extends React.Component {
                 const newScore = {
                     score: this.state.correctAnswers.length
                 }
-                axios.post('/api/scores', newScore).then(res => {
+                postsAxios.post('/api/scores', newScore).then(res => {
                 this.gameOver()
             })
             } else {
