@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const mongoose = require("mongoose");
+const path = require("path");
 const PORT = process.env.PORT || 8080;
 const authRoute = require("./routes/auth");
 const scoreRoutes = require("./routes/scoreRoutes");
@@ -14,7 +15,7 @@ const expressJwt = require("express-jwt");
 // Middlwares to be used on every request that comes into the server
 app.use(morgan("dev"));
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, "client", "build")))
 // Connects to Mongodb on your local hard drive to save your db
 mongoose
   .connect(
@@ -39,6 +40,11 @@ app.use("/api/scores", scoreRoutes);
 app.use("/api/city-scores", cityScoresRoutes);
 app.use("/api/profile", profileRoutes);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`);
 });
+
