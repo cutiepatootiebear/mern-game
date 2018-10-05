@@ -18,7 +18,7 @@ app.use(express.json());
 // Connects to Mongodb on your local hard drive to save your db
 mongoose
   .connect(
-    "mongodb://localhost:27017/mern-game",
+    process.env.MONGODB_URI || "mongodb://localhost:27017/mern-game",
     { useNewUrlParser: true },
     () => {
       console.log("Connected to the database");
