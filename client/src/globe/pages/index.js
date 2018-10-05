@@ -50,7 +50,7 @@ class AlbersUSA extends Component {
 
   componentDidMount() {
     this.getScores();
-    setTimeout(this.setHighScore, 200);
+    // setTimeout(this.setHighScore, 200);
     // axios.get('/states').then(res => {
     //     let randomNum = Math.floor((Math.random() * 30) + 1)
     //     this.setState({
@@ -63,8 +63,8 @@ class AlbersUSA extends Component {
     postsAxios.get("/api/city-scores").then(res => {
       const mappedData = res.data.map(obj => obj.score);
       this.setState(prevState => ({
-        scores: [...prevState.scores, ...mappedData]
-        // highScore: Math.max(...[...prevState.scores, ...mappedData])
+        scores: [...prevState.scores, ...mappedData],
+        highScore: Math.max(...[...prevState.scores, ...mappedData])
       }));
     });
   };
@@ -83,13 +83,12 @@ class AlbersUSA extends Component {
       randomState: cities[randomNum]
     });
   };
-//       randomState: cities[Math.floor(Math.random() * 30 + 1)],
-      // scores: [],
-      // highScore: 0,
-      // message: ''
-//     };
-//   }
-
+  //       randomState: cities[Math.floor(Math.random() * 30 + 1)],
+  // scores: [],
+  // highScore: 0,
+  // message: ''
+  //     };
+  //   }
 
   // mapHandler = event => {
   //   if (event.name !== this.state.randomState.name) {
@@ -121,10 +120,10 @@ class AlbersUSA extends Component {
         }));
         alert("You are incorrect. Try again.");
       }
-//       this.setState(prevState => ({
-//         wrongAnswers: [...prevState.wrongAnswers, "1"]
-//       }));
-//       alert("You're wrong fucker!");
+      //       this.setState(prevState => ({
+      //         wrongAnswers: [...prevState.wrongAnswers, "1"]
+      //       }));
+      //       alert("You're wrong fucker!");
     } else {
       this.setState(prevState => ({
         correctAnswers: [...prevState.correctAnswers, "1"]
@@ -141,39 +140,39 @@ class AlbersUSA extends Component {
       correctAnswers: []
     });
   };
-//   mapHandler = event => {
-//     if (event.name !== this.state.randomState.name) {
-//         if(this.state.wrongAnswers.length > 1){
-//             const newScore = {
-//                 score: this.state.correctAnswers.length
-//             }
-//             postsAxios.post('/api/scores', newScore).then(res => {
-//             this.gameOver()
-//         })
-//         } else {
-//             this.setState(prevState => ({
-//                 wrongAnswers: [...prevState.wrongAnswers, "1"],
-//                 message: 'WRONG! Try again'
-//             }))
-//         }
-//     } else {
-//         this.setState(prevState => ({
-//             correctAnswers: [...prevState.correctAnswers, "1"],
-//             message: ''
-//         }))
-//         alert("Correct! Keep going!")
-//         this.randomState()
-//     }
-//     // alert(event.target.dataset.name)
-// }
+  //   mapHandler = event => {
+  //     if (event.name !== this.state.randomState.name) {
+  //         if(this.state.wrongAnswers.length > 1){
+  //             const newScore = {
+  //                 score: this.state.correctAnswers.length
+  //             }
+  //             postsAxios.post('/api/scores', newScore).then(res => {
+  //             this.gameOver()
+  //         })
+  //         } else {
+  //             this.setState(prevState => ({
+  //                 wrongAnswers: [...prevState.wrongAnswers, "1"],
+  //                 message: 'WRONG! Try again'
+  //             }))
+  //         }
+  //     } else {
+  //         this.setState(prevState => ({
+  //             correctAnswers: [...prevState.correctAnswers, "1"],
+  //             message: ''
+  //         }))
+  //         alert("Correct! Keep going!")
+  //         this.randomState()
+  //     }
+  //     // alert(event.target.dataset.name)
+  // }
 
-// gameOver = () => {
-//   alert("GAME OVER\nScore successfully uploaded")
-//   this.setState({
-//       wrongAnswers:[],
-//       correctAnswers: []
-//   })
-// }
+  // gameOver = () => {
+  //   alert("GAME OVER\nScore successfully uploaded")
+  //   this.setState({
+  //       wrongAnswers:[],
+  //       correctAnswers: []
+  //   })
+  // }
 
   render() {
     // this.randomState();
@@ -182,10 +181,10 @@ class AlbersUSA extends Component {
     return (
       <div style={wrapperStyles}>
         <div className="App">
-//           <h1>
+          {/* //           <h1>
 //             Try your best at finding{" "}
 //             {this.state.randomState ? this.state.randomState.name : ""}
-//           </h1>
+//           </h1> */}
           <div className="flexStuff-globe">
             <p className="globe-scoreText">Your Highest Score:</p>
             <p className="globe-highScore">{this.state.highScore}</p>
@@ -199,8 +198,8 @@ class AlbersUSA extends Component {
             Find {this.state.randomState ? this.state.randomState.name : ""} !{" "}
           </h1>
         </div>
-       {/* <Scores /> */}
-       {/* <div className="scoreBoard">
+        {/* <Scores /> */}
+        {/* <div className="scoreBoard">
                 <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
                 <p className='title'>Find the following:</p>
                 <p className='randomState'>{this.state.randomState}</p>

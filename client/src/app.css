@@ -92,7 +92,7 @@ path:hover {
 }
 
 .App {
-/*   text-align: center;
+  /*   text-align: center;
   color: white; */
   /* display: grid;
   grid-template-columns: '1fr' */
@@ -170,7 +170,7 @@ path:hover {
   clear: right;
   margin-right: 6%;
   color: white;
-  font-size: 65px;
+  font-size: 15px;
 }
 
 .scoreText2 {
@@ -186,7 +186,7 @@ path:hover {
   clear: right;
   margin-right: 6%;
   color: white;
-  font-size: 65px;
+  font-size: 15px;
 }
 
 .wrongAns {
@@ -209,7 +209,7 @@ path:hover {
   float: right;
   margin-right: 15px;
   color: white;
-  font-size: 27px;
+  font-size: 15px;
 }
 
 .globe-highScore {
@@ -217,7 +217,7 @@ path:hover {
   clear: right;
   margin-right: 15px;
   color: white;
-  font-size: 65px;
+  font-size: 40px;
 }
 
 .globe-scoreText2 {
@@ -225,7 +225,7 @@ path:hover {
   clear: right;
   margin-right: 15px;
   color: white;
-  font-size: 27px;
+  font-size: 15px;
 }
 
 .globe-score {
@@ -233,7 +233,7 @@ path:hover {
   clear: right;
   margin-right: 15px;
   color: white;
-  font-size: 65px;
+  font-size: 40px;
 }
 
 .globe-wrongAns {
@@ -241,7 +241,7 @@ path:hover {
   clear: right;
   margin-right: 15px;
   color: white;
-  font-size: 65px;
+  font-size: 40px;
 }
 
 .globe-msg {
@@ -257,24 +257,34 @@ path:hover {
   width: 50%;
 }
 
-
 .flexStuff {
   color: white;
 }
 
-.flexStuff-globe {
-  color: white;
-  display: flex;
-  justify-content: center;
+  .flexStuff-globe {
+    color: white;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    left: 75vw;
+    top: -1vh;
+    height: 50vh;
+    /* background-color: blue !important; */
+    width: 15vw;
+    padding-bottom: 25px;
 }
 
-@media only screen and (max-width: 1650px){
+@media only screen and (max-width: 1650px) {
   .map {
     margin-left: 5%;
   }
 }
 
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px) {
   .flexStuff {
     display: flex;
     justify-content: center;
@@ -282,45 +292,45 @@ path:hover {
   .scoreText {
     font-size: 13px;
   }
-  
+
   .highScore {
     font-size: 32px;
   }
-  
+
   .scoreText2 {
     font-size: 13px;
   }
-  
+
   .score {
     font-size: 32px;
   }
-  
+
   .wrongAns {
     font-size: 32px;
   }
-  
+
   .msg {
     font-size: 20px;
   }
 }
 
-@media only screen and (max-width:760px){
+@media only screen and (max-width: 760px) {
   .globe-scoreText {
     font-size: 13px;
   }
-  
+
   .globe-highScore {
     font-size: 32px;
   }
-  
+
   .globe-scoreText2 {
     font-size: 13px;
   }
-  
+
   .globe-score {
     font-size: 32px;
   }
-  
+
   .globe-wrongAns {
     font-size: 32px;
   }
@@ -332,4 +342,3 @@ path:hover {
   top: 25%;
   background-color: yellow;
 }
-
