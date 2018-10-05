@@ -5,9 +5,6 @@ import ProtectedRoute from "./shared/ProtectedRoute";
 import Game from "./components/Game";
 import Globe from "./globe/pages/index";
 import Auth from "./components/Auth";
-// import Profile from "./components/Profile";
-// import Scores from "./components/Scores";
-// import Footer from "./components/Footer";
 import axios from "axios";
 import Particles from "react-particles-js";
 
@@ -139,7 +136,6 @@ class App extends React.Component {
       loading: false
     }));
   };
-  
 
   render() {
     const { isAuthenticated, loading } = this.state;
@@ -163,11 +159,12 @@ class App extends React.Component {
                 opacity: {
                   value: 0.48927153781200905,
                   random: false,
-                  "anim": {
+                  anim: {
                     enable: true,
                     speed: 0.2,
                     opacity_min: 0
-                  }},
+                  }
+                },
                 line_linked: {
                   // enable: false
                 },
@@ -212,12 +209,6 @@ class App extends React.Component {
                 )
               }
             />
-            {/* <ProtectedRoute
-              path="/profile"
-              redirectTo="/"
-              isAuthenticated={isAuthenticated}
-              render={props => <Profile {...props} user={this.state.user} />}
-            /> */}
             <ProtectedRoute
               path="/states"
               redirectTo="/"
@@ -230,17 +221,6 @@ class App extends React.Component {
               isAuthenticated={isAuthenticated}
               render={props => <Globe {...props} scores={this.state.scores} />}
             />
-            {/* <ProtectedRoute
-              path="/game"
-              redirectTo="/"
-              isAuthenticated={isAuthenticated}
-              render={props => (
-                <Fragment>
-                  <Profile {...props} user={this.state.user} scores={this.state.scores} logout={this.logout} authenticated={this.authenticate} />
-                  <Game />
-                  <Scores {...props} scores={this.state.scores} />
-                </Fragment>
-              )} */}
             />
           </Switch>
         )}
