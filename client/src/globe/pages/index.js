@@ -50,13 +50,6 @@ class AlbersUSA extends Component {
 
   componentDidMount() {
     this.getScores();
-    // setTimeout(this.setHighScore, 200);
-    // axios.get('/states').then(res => {
-    //     let randomNum = Math.floor((Math.random() * 30) + 1)
-    //     this.setState({
-    //         randomState: res.data[randomNum].abbreviation
-    //     })
-    // })
   }
 
   getScores = () => {
@@ -83,27 +76,6 @@ class AlbersUSA extends Component {
       randomState: cities[randomNum]
     });
   };
-  //       randomState: cities[Math.floor(Math.random() * 30 + 1)],
-  // scores: [],
-  // highScore: 0,
-  // message: ''
-  //     };
-  //   }
-
-  // mapHandler = event => {
-  //   if (event.name !== this.state.randomState.name) {
-  //     this.setState(prevState => ({
-  //       wrongAnswers: [...prevState.wrongAnswers, "1"]
-  //     }));
-  //     alert("You are incorrect. Try again.");
-  //   } else {
-  //     this.setState(prevState => ({
-  //       correctAnswers: [...prevState.correctAnswers, "1"]
-  //     }));
-  //     alert("Correct!");
-  //     this.randomState();
-  //   }
-  // };
 
   mapHandler = event => {
     if (event.name !== this.state.randomState.name) {
@@ -120,10 +92,6 @@ class AlbersUSA extends Component {
         }));
         alert("You are incorrect. Try again.");
       }
-      //       this.setState(prevState => ({
-      //         wrongAnswers: [...prevState.wrongAnswers, "1"]
-      //       }));
-      //       alert("You're wrong fucker!");
     } else {
       this.setState(prevState => ({
         correctAnswers: [...prevState.correctAnswers, "1"]
@@ -140,51 +108,11 @@ class AlbersUSA extends Component {
       correctAnswers: []
     });
   };
-  //   mapHandler = event => {
-  //     if (event.name !== this.state.randomState.name) {
-  //         if(this.state.wrongAnswers.length > 1){
-  //             const newScore = {
-  //                 score: this.state.correctAnswers.length
-  //             }
-  //             postsAxios.post('/api/scores', newScore).then(res => {
-  //             this.gameOver()
-  //         })
-  //         } else {
-  //             this.setState(prevState => ({
-  //                 wrongAnswers: [...prevState.wrongAnswers, "1"],
-  //                 message: 'WRONG! Try again'
-  //             }))
-  //         }
-  //     } else {
-  //         this.setState(prevState => ({
-  //             correctAnswers: [...prevState.correctAnswers, "1"],
-  //             message: ''
-  //         }))
-  //         alert("Correct! Keep going!")
-  //         this.randomState()
-  //     }
-  //     // alert(event.target.dataset.name)
-  // }
-
-  // gameOver = () => {
-  //   alert("GAME OVER\nScore successfully uploaded")
-  //   this.setState({
-  //       wrongAnswers:[],
-  //       correctAnswers: []
-  //   })
-  // }
 
   render() {
-    // this.randomState();
-    // console.log(`Wrong answers: ${this.state.wrongAnswers.length}`);
-    // console.log(`Correct answers: ${this.state.correctAnswers.length}`);
     return (
       <div style={wrapperStyles}>
         <div className="App">
-          {/* //           <h1>
-//             Try your best at finding{" "}
-//             {this.state.randomState ? this.state.randomState.name : ""}
-//           </h1> */}
           <div className="flexStuff-globe">
             <p className="globe-scoreText">Your Highest Score:</p>
             <p className="globe-highScore">{this.state.highScore}</p>
@@ -193,24 +121,10 @@ class AlbersUSA extends Component {
             <p className="globe-scoreText2">Incorrect:</p>
             <p className="globe-wrongAns">{this.state.wrongAnswers.length}</p>
           </div>
-          {/* <p className="globe-msg">{this.state.message}</p> */}
           <h1 className="dynamicText">
             Find {this.state.randomState ? this.state.randomState.name : ""} !{" "}
           </h1>
         </div>
-        {/* <Scores /> */}
-        {/* <div className="scoreBoard">
-                <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
-                <p className='title'>Find the following:</p>
-                <p className='randomState'>{this.state.randomState}</p>
-                <p className='scoreText'>Your Highest Score:</p>
-                <p className='highScore'>{this.state.highScore}</p>
-                <p className='scoreText2'>Score:</p>
-                <p className='score'>{this.state.correctAnswers.length}</p>
-                <p className='scoreText2'>Incorrect:</p>
-                <p className='wrongAns'>{this.state.wrongAnswers.length}</p>
-                <p className='msg'>{this.state.message}</p>      
-            </div> */}
         <ComposableMap
           projection="orthographic"
           projectionConfig={{
@@ -226,7 +140,6 @@ class AlbersUSA extends Component {
           <ZoomableGlobe center={[96, 32]}>
             <circle cx={400} cy={400} r={300} fill="#001f3f" stroke="#eceff1" />
             <Geographies
-              // geography="/static/world-110m.json"
               geography={svgMap}
               disableOptimization
             >
@@ -236,7 +149,6 @@ class AlbersUSA extends Component {
                     <Geography
                       key={i}
                       onClick={() => {
-                        // console.log("Geography", geography);
                       }}
                       round
                       geography={geography}

@@ -6,7 +6,6 @@
 }
 
 body {
-  /* background-color: #6a737f !important; */
   background-color: #2d3436 !important;
   height: 100vh !important;
   width: 100vw;
@@ -80,22 +79,14 @@ path:hover {
   border-style: none;
   padding-left: 20px;
   padding-right: 20px;
-  /* margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px; */
 }
 
 .logout-button:hover {
   transition: 0.3s;
   background-color: red;
-  /* font-size: 20px; */
 }
 
 .App {
-  /*   text-align: center;
-  color: white; */
-  /* display: grid;
-  grid-template-columns: '1fr' */
   color: #fff;
   position: absolute;
   top: 20vh;
@@ -115,7 +106,7 @@ path:hover {
 }
 
 .App h1 {
-  font-size: 3.10em;
+  font-size: 3.1em;
   max-width: 32vw;
 }
 
@@ -274,21 +265,19 @@ path:hover {
   color: white;
 }
 
-  .flexStuff-globe {
-    color: white;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    /* justify-content: space-between; */
-    flex-direction: column;
-    align-items: flex-end;
-    position: absolute;
-    left: 75vw;
-    top: -1vh;
-    height: 50vh;
-    /* background-color: blue !important; */
-    width: 15vw;
-    padding-bottom: 25px;
+.flexStuff-globe {
+  color: white;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  left: 75vw;
+  top: -1vh;
+  height: 50vh;
+  width: 15vw;
+  padding-bottom: 25px;
 }
 
 @media only screen and (max-width: 1650px) {
