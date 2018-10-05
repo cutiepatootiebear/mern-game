@@ -82,14 +82,13 @@ class Game extends React.Component {
             })
             } else {
                 this.setState(prevState => ({
-                    wrongAnswers: [...prevState.wrongAnswers, "1"],
-                    message: 'WRONG! Try again'
+                    wrongAnswers: [...prevState.wrongAnswers, "1"]
                 }))
+                alert('Oops! Try again')
             }
         } else {
             this.setState(prevState => ({
-                correctAnswers: [...prevState.correctAnswers, "1"],
-                message: ''
+                correctAnswers: [...prevState.correctAnswers, "1"]
             }))
             alert("Correct! Keep going!")
             this.randomState()
@@ -113,8 +112,8 @@ class Game extends React.Component {
         // console.log(this.state.highScore)
         return (
             <div>
-                <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
-                <p className='title'>Find the following:</p>
+                <p className='title'>After 3 wrong answers it's game over!</p>
+                <p className='title2'>Find the following:</p>
                 <p className='randomState'>{this.state.randomState}</p>
                 <div className='flexStuff'>
                     <p className='scoreText'>Your Highest Score:</p>
