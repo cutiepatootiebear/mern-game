@@ -82,7 +82,7 @@ class AlbersUSA extends Component {
               cx={400}
               cy={400}
               r={300}
-              fill="transparent"
+              fill="#001f3f"
               stroke="#eceff1"
             />
             <Geographies

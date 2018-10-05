@@ -112,7 +112,7 @@ class Game extends React.Component {
         // console.log(scores)
         // console.log(this.state.highScore)
         return (
-            <div className="App">
+            <div>
                 <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
                 <p className='title'>Find the following:</p>
                 <p className='randomState'>{this.state.randomState}</p>

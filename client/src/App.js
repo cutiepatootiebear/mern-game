@@ -160,19 +160,19 @@ class App extends React.Component {
                   random: true
                 },
                 line_linked: {
-                  enable: false
+                  // enable: false
                 },
                 modes: {
                   bubble: {
-                    distance: 250,
-                    // duration: 2,
+                    distance: 50,
+                    duration: 0,
                     size: 0,
                     opacity: 0
+                  },
+                  repulse: {
+                    distance: 0,
+                    duration: 0
                   }
-                  // repulse: {
-                  //   distance: 400,
-                  //   duration: 4
-                  // }
                 }
               }
             }}
@@ -192,7 +192,7 @@ class App extends React.Component {
               path="/"
               render={props =>
                 isAuthenticated ? (
-                  <Redirect to="/game" />
+                  <Redirect to="/globe" />
                 ) : (
                   <Auth
                     {...props}
