@@ -6,8 +6,8 @@ const Navbar = props => {
     return (
         <div className='navbar'>
             {/* <Link to="/profile">Profile</Link> */}
-            <Link to="/game">Game</Link>
-            <Link to="/globe">Globe</Link>
+            <Link to="/states">States Game</Link>
+            <Link to="/cities">Cities Game</Link>
             {authenticated && <button onClick={logout} className='logout-button'>Logout</button>}
         </div>
     )

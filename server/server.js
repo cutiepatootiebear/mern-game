@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 8080
 const authRoute = require('./routes/auth')
 const scoreRoutes = require("./routes/scoreRoutes")
+const cityScoresRoutes = require("./routes/citiesScores")
 const States = require('./routes/us-states')
 require("dotenv").config()
 const profileRoutes = require('./routes/profile')
@@ -36,6 +37,7 @@ app.use("/api", expressJwt({secret: process.env.SECRET}))
 app.use("/states", States)
 app.use("/auth", authRoute)
 app.use("/api/scores", scoreRoutes)
+app.use("/api/city-scores", cityScoresRoutes)
 app.use("/api/profile", profileRoutes)
 
 
