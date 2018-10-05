@@ -192,7 +192,7 @@ class App extends React.Component {
               path="/"
               render={props =>
                 isAuthenticated ? (
-                  <Redirect to="/game" />
+                  <Redirect to="/cities" />
                 ) : (
                   <Auth
                     {...props}
@@ -210,13 +210,13 @@ class App extends React.Component {
               render={props => <Profile {...props} user={this.state.user} />}
             /> */}
             <ProtectedRoute
-              path="/game"
+              path="/states"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => <Game {...props} scores={this.state.scores} />}
             />
             <ProtectedRoute
-              path="/globe"
+              path="/cities"
               redirectTo="/"
               isAuthenticated={isAuthenticated}
               render={props => <Globe {...props} scores={this.state.scores} />}
