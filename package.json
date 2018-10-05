@@ -34,6 +34,6 @@
     "redux-thunk": "^2.3.0"
   },
   "engines": {
-    "node": "v8.11.3"
+    "node": "8.11.3"
 }
 }
