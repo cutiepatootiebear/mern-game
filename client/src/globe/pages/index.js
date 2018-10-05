@@ -40,13 +40,14 @@ class AlbersUSA extends Component {
       wrongAnswers: [],
       scores: [],
       message: "",
+      highScore: 0,
       randomState: cities[Math.floor(Math.random() * 30 + 1)]
     };
   }
 
   componentDidMount() {
     this.getScores();
-    // setTimeout(this.setHighScore, 200)
+    setTimeout(this.setHighScore, 200);
     // axios.get('/states').then(res => {
     //     let randomNum = Math.floor((Math.random() * 30) + 1)
     //     this.setState({
@@ -56,12 +57,19 @@ class AlbersUSA extends Component {
   }
 
   getScores = () => {
-    postsAxios.get("/api/scores").then(res => {
+    postsAxios.get("/api/city-scores").then(res => {
       const mappedData = res.data.map(obj => obj.score);
       this.setState(prevState => ({
-        scores: [...prevState.scores, ...mappedData],
-        highScore: Math.max(...[...prevState.scores, ...mappedData])
+        scores: [...prevState.scores, ...mappedData]
+        // highScore: Math.max(...[...prevState.scores, ...mappedData])
       }));
+    });
+  };
+
+  setHighScore = () => {
+    console.log(this.state.scores);
+    this.setState({
+      highScore: Math.max(...this.state.scores)
     });
   };
 
@@ -94,14 +102,14 @@ class AlbersUSA extends Component {
         const newScore = {
           score: this.state.correctAnswers.length
         };
-        postsAxios.post("/api/scores", newScore).then(res => {
+        postsAxios.post("/api/city-scores", newScore).then(res => {
           this.gameOver();
         });
       } else {
         this.setState(prevState => ({
           wrongAnswers: [...prevState.wrongAnswers, "1"]
         }));
-        alert("You are incorrect. Try again.")
+        alert("You are incorrect. Try again.");
       }
     } else {
       this.setState(prevState => ({
