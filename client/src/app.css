@@ -92,6 +92,10 @@ path:hover {
 }
 
 .App {
+/*   text-align: center;
+  color: white; */
+  /* display: grid;
+  grid-template-columns: '1fr' */
   color: #fff;
   position: absolute;
   top: 20vh;
@@ -144,12 +148,14 @@ path:hover {
   margin-top: 10px;
   text-align: center;
   font-size: 25px;
+  color: white;
 }
 
 .randomState {
   text-align: center;
   font-size: 50px;
   font-weight: bolder;
+  color: limegreen;
 }
 
 .scoreText {
@@ -199,9 +205,125 @@ path:hover {
   font-size: 40px;
 }
 
+.globe-scoreText {
+  float: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 27px;
+}
+
+.globe-highScore {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-scoreText2 {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 27px;
+}
+
+.globe-score {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-wrongAns {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-msg {
+  float: right;
+  clear: right;
+  margin-right: 1%;
+  color: red;
+  font-size: 40px;
+}
+
 .map {
   margin: auto;
   width: 50%;
+}
+
+
+.flexStuff {
+  color: white;
+}
+
+.flexStuff-globe {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1650px){
+  .map {
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .flexStuff {
+    display: flex;
+    justify-content: center;
+  }
+  .scoreText {
+    font-size: 13px;
+  }
+  
+  .highScore {
+    font-size: 32px;
+  }
+  
+  .scoreText2 {
+    font-size: 13px;
+  }
+  
+  .score {
+    font-size: 32px;
+  }
+  
+  .wrongAns {
+    font-size: 32px;
+  }
+  
+  .msg {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width:760px){
+  .globe-scoreText {
+    font-size: 13px;
+  }
+  
+  .globe-highScore {
+    font-size: 32px;
+  }
+  
+  .globe-scoreText2 {
+    font-size: 13px;
+  }
+  
+  .globe-score {
+    font-size: 32px;
+  }
+  
+  .globe-wrongAns {
+    font-size: 32px;
+  }
 }
 
 .scoreBoard {
@@ -210,3 +332,4 @@ path:hover {
   top: 25%;
   background-color: yellow;
 }
+

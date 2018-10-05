@@ -116,12 +116,14 @@ class Game extends React.Component {
                 <p className='title'>Try your best at finding the correct state. After 3 wrong answers it's game over!</p>
                 <p className='title'>Find the following:</p>
                 <p className='randomState'>{this.state.randomState}</p>
-                <p className='scoreText'>Your Highest Score:</p>
-                <p className='highScore'>{this.state.highScore}</p>
-                <p className='scoreText2'>Score:</p>
-                <p className='score'>{this.state.correctAnswers.length}</p>
-                <p className='scoreText2'>Incorrect:</p>
-                <p className='wrongAns'>{this.state.wrongAnswers.length}</p>
+                <div className='flexStuff'>
+                    <p className='scoreText'>Your Highest Score:</p>
+                    <p className='highScore'>{this.state.highScore}</p>
+                    <p className='scoreText2'>Score:</p>
+                    <p className='score'>{this.state.correctAnswers.length}</p>
+                    <p className='scoreText2'>Incorrect:</p>
+                    <p className='wrongAns'>{this.state.wrongAnswers.length}</p>
+                </div>
                 <p className='msg'>{this.state.message}</p>
                 <div className='map'>
                     <USAMap onClick={this.mapHandler} />
