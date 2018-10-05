@@ -52,7 +52,7 @@ class Auth extends Component {
             render={props => (
               <FormsPage
                 {...props}
-                btnText="Login"
+                btnText="Log on to MERN Game"
                 altBtn="New Member?"
                 toggle={this.toggle}
                 errMsg={errMsg}
