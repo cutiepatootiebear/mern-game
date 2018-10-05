@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const mongoose = require("mongoose");
-const path = require('path')
+const path = require("path");
 const PORT = process.env.PORT || 8080;
 const authRoute = require("./routes/auth");
 const scoreRoutes = require("./routes/scoreRoutes");
@@ -43,9 +43,10 @@ app.use("/api/city-scores", cityScoresRoutes);
 app.use("/api/profile", profileRoutes);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"))
-})
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running port ${PORT}`);
 });
+
