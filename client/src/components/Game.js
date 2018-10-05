@@ -97,7 +97,7 @@ class Game extends React.Component {
         <p className="randomState">{this.state.randomState}</p>
         <div className="flexStuff">
           <p className="scoreText">Your Highest Score:</p>
-          <p className="highScore">{this.state.highScore ? this.state.highScore !== null}</p>
+          <p className="highScore">{this.state.highScore}</p>
           <p className="scoreText2">Score:</p>
           <p className="score">{this.state.correctAnswers.length}</p>
           <p className="scoreText2">Incorrect:</p>
