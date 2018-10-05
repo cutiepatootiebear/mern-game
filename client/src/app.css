@@ -167,6 +167,53 @@ path:hover {
   font-size: 40px;
 }
 
+.globe-scoreText {
+  float: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 27px;
+}
+
+.globe-highScore {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-scoreText2 {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 27px;
+}
+
+.globe-score {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-wrongAns {
+  float: right;
+  clear: right;
+  margin-right: 15px;
+  color: white;
+  font-size: 65px;
+}
+
+.globe-msg {
+  float: right;
+  clear: right;
+  margin-right: 1%;
+  color: red;
+  font-size: 40px;
+}
+
 .map {
   margin: auto;
   width: 50%;
@@ -174,6 +221,12 @@ path:hover {
 
 .flexStuff {
   color: white;
+}
+
+.flexStuff-globe {
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1650px){
@@ -209,5 +262,27 @@ path:hover {
   
   .msg {
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width:760px){
+  .globe-scoreText {
+    font-size: 13px;
+  }
+  
+  .globe-highScore {
+    font-size: 32px;
+  }
+  
+  .globe-scoreText2 {
+    font-size: 13px;
+  }
+  
+  .globe-score {
+    font-size: 32px;
+  }
+  
+  .globe-wrongAns {
+    font-size: 32px;
   }
 }
