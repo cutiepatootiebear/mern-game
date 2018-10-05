@@ -19,6 +19,7 @@ class Game extends React.Component {
       correctAnswers: [],
       wrongAnswers: [],
       scores: [],
+      startingHiScore: 0,
       highScore: 0,
       randomState: "",
       message: ""
