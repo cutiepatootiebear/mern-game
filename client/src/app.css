@@ -75,8 +75,8 @@ path:hover {
 }
 
 .App {
-  /* margin-top: 25px;
-  margin-left: 250px; */
+  text-align: center;
+  color: white;
   /* display: grid;
   grid-template-columns: '1fr' */
 }
@@ -110,12 +110,14 @@ path:hover {
   margin-top: 10px;
   text-align: center;
   font-size: 25px;
+  color: white;
 }
 
 .randomState {
   text-align: center;
   font-size: 50px;
   font-weight: bolder;
+  color: white;
 }
 
 .scoreText {
@@ -168,4 +170,44 @@ path:hover {
 .map {
   margin: auto;
   width: 50%;
+}
+
+.flexStuff {
+  color: white;
+}
+
+@media only screen and (max-width: 1650px){
+  .map {
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .flexStuff {
+    display: flex;
+    justify-content: center;
+  }
+  .scoreText {
+    font-size: 13px;
+  }
+  
+  .highScore {
+    font-size: 32px;
+  }
+  
+  .scoreText2 {
+    font-size: 13px;
+  }
+  
+  .score {
+    font-size: 32px;
+  }
+  
+  .wrongAns {
+    font-size: 32px;
+  }
+  
+  .msg {
+    font-size: 20px;
+  }
 }
