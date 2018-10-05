@@ -12,14 +12,16 @@ require("dotenv").config();
 const profileRoutes = require("./routes/profile");
 const expressJwt = require("express-jwt");
 
+
 // Middlwares to be used on every request that comes into the server
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client", "build")))
 // Connects to Mongodb on your local hard drive to save your db
 mongoose
-  .connect(
-    process.env.MONGODB_URI || "mongodb://localhost:27017/mern-game",
+  .connect(process.env.MONGODB_URI ||
+    "mongodb://localhost:27017/mern-game",
+
     { useNewUrlParser: true },
     () => {
       console.log("Connected to the database");
