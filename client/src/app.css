@@ -147,12 +147,24 @@ path:hover {
 .title {
   margin-top: 10px;
   text-align: center;
+  font-size: 35px;
+  color: limegreen;
+}
+
+.title2 {
+  margin-top: -20px;
+  float: right;
+  clear: right;
+  margin-right: 6%;
+  text-align: center;
   font-size: 25px;
   color: white;
 }
 
 .randomState {
-  text-align: center;
+  float: right;
+  clear: right;
+  margin-right: 6%;
   font-size: 50px;
   font-weight: bolder;
   color: limegreen;
@@ -160,6 +172,7 @@ path:hover {
 
 .scoreText {
   float: right;
+  clear: right;
   margin-right: 6%;
   color: white;
   font-size: 27px;
