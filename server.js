@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 mongoose
   .connect(process.env.MONGODB_URI ||
     "mongodb://localhost:27017/mern-game",
+
     { useNewUrlParser: true },
     () => {
       console.log("Connected to the database");
