@@ -139,6 +139,7 @@ class App extends React.Component {
       loading: false
     }));
   };
+  
 
   render() {
     const { isAuthenticated, loading } = this.state;
@@ -150,7 +151,7 @@ class App extends React.Component {
             params={{
               particles: {
                 number: {
-                  value: 160,
+                  value: 150,
                   density: {
                     enable: false
                   }
@@ -159,20 +160,28 @@ class App extends React.Component {
                   value: 3,
                   random: true
                 },
+                opacity: {
+                  value: 0.48927153781200905,
+                  random: false,
+                  "anim": {
+                    enable: true,
+                    speed: 0.2,
+                    opacity_min: 0
+                  }},
                 line_linked: {
-                  enable: false
+                  // enable: false
                 },
                 modes: {
                   bubble: {
-                    distance: 250,
-                    // duration: 2,
+                    distance: 50,
+                    duration: 0,
                     size: 0,
                     opacity: 0
+                  },
+                  repulse: {
+                    distance: 0,
+                    duration: 0
                   }
-                  // repulse: {
-                  //   distance: 400,
-                  //   duration: 4
-                  // }
                 }
               }
             }}
