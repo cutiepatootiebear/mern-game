@@ -71,7 +71,7 @@ class FormsPage extends React.Component {
                         id="defaultCheck17"
                       />
                       <br />
-                      <label
+                      {/* <label
                         className="form-check-label white-text"
                         htmlFor="defaultCheck17"
                       >
@@ -80,7 +80,7 @@ class FormsPage extends React.Component {
                           {" "}
                           Terms and for this game
                         </a>
-                      </label>
+                      </label> */}
                     </div>
                   </div>
                   <Row className="d-flex align-items-center mb-4">
